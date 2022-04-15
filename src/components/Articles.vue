@@ -35,16 +35,6 @@
   import {Quote} from "@/model/quote";
   import { Prop } from "vue-property-decorator";
 
-  @Options({
-    // filters: {
-    //   capitalize(value: string) {
-    //     if (value !== null) {
-    //       return value.toUpperCase()
-    //     }
-    //     return '';
-    //   }
-    // }
-  })
   export default class Articles extends Vue {
     @Getter('articleCategories/allCategories') allCategories;
     @Getter('articles/allArticles') allArticles: [];
