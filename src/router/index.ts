@@ -1,11 +1,23 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Articles from "@/components/Articles.vue";
+import Quotes from "@/components/Quotes.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/articles',
+    name: 'articles',
+    component: Articles
+  },
+  {
+    path: '/quotes',
+    name: 'quotes',
+    component: Quotes
   },
   {
     path: '/about',
