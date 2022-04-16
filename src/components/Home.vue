@@ -13,7 +13,7 @@ import RandomQuote from "@/components/RandomQuote.vue";
       RandomQuote: RandomQuote
   }
 })
-export default class HelloWorld extends Vue {
+export default class Home extends Vue {
 }
 </script>
 

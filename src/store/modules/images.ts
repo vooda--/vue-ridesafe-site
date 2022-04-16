@@ -19,7 +19,7 @@ export default {
     },
     actions: {
         async getRandomImage({commit, state}, {orientation, tags}) {
-            axios
+            return axios
                 .get(`https://dev.voodalab.com/quotes/randomImage?keywords=${tags.join(',')}&orientation=${orientation}`, {
                     headers: {
                         Authorization: `Basic ${state.token}`,

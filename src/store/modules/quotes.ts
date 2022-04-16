@@ -7,9 +7,15 @@ export default {
     updateQuotes(state: any, quotes: any) {
       state.quotes = quotes;
     },
+    randomQuote(state: any) {
+      const random = Math.random(); //0..1
+      const key = Math.floor(state.quotes.length * random); /* example: 40 quotes, 0.33; 40*0.33 */
+      state.randomQuote = state.quotes[key];
+    }
   },
   state: {
     quotes: [],
+    randomQuote: null,
     token: helpers.tokenn()
   },
 
@@ -21,14 +27,12 @@ export default {
       return state.userToken;
     },
     getRandomQuote(state: any) {
-      const random = Math.random(); //0..1
-      const key = Math.floor(state.quotes.length * random); /* example: 40 quotes, 0.33; 40*0.33 */
-      return state.quotes[key];
+      return state.randomQuote;
     }
   },
   actions: {
     async getAllQuotes({commit, state}, language: string) {
-      axios
+      return axios
         .get('https://dev.voodalab.com' + '/school/quotes/'+language!+'?lastRequest=0', {
           headers: {
             Authorization: `Basic ${state.token}`,
