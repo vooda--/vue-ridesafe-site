@@ -1,6 +1,6 @@
 <template>
     <div class="quotes">
-        <div class="quote-block" v-for="quote in allQuotes" v-bind:key="quote.id">
+        <div class="quote-block" v-for="quote in allQuotes" v-on:click="navigateToQuote(quote.id)" v-bind:key="quote.id">
             <div class="quote-text">
                 {{ quote.quoteText }}
             </div>
@@ -25,7 +25,11 @@ export default class Quotes extends Vue {
     @Action('images/getRandomImage') getRandomImage: ({ orientation, tags }) => void;
     @Getter('quotes/getRandomQuote') randomQuote: any;
     @Getter('images/randomImage') randomImage: any;
-    @Prop() private language = 'ru';
+    @Getter('user/language') language: string;
+
+    navigateToQuote(quoteId) {
+        this.$router.push({name: 'quote', params: {quoteId}});
+    }
 
     get languages(): [string, string, string] {
         return ['ru', 'en', 'ro'];
@@ -50,8 +54,9 @@ export default class Quotes extends Vue {
             font-size: 14px;
         }
     }
-
-    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(100px, auto);
@@ -60,6 +65,7 @@ export default class Quotes extends Vue {
     row-gap: 20px;
 
     .quote-block {
+        cursor: pointer;
         background: rgba(255, 212, 129, 0.43);
         border-radius: 5px;
         padding: 5px;

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Articles from "@/components/Articles.vue";
-import Quotes from "@/components/Quotes.vue";
+import QuotesView from "@/views/QuotesView.vue";
+import ArticlesView from "@/views/ArticlesView.vue";
+import QuoteView from "@/views/QuoteView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,12 +13,18 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/articles',
     name: 'articles',
-    component: Articles
+    component: ArticlesView
   },
   {
     path: '/quotes',
     name: 'quotes',
-    component: Quotes
+    component: QuotesView
+  },
+  {
+    path: '/quotes/:quoteId',
+    name: 'quote',
+    component: QuoteView,
+    props: true
   },
   {
     path: '/about',

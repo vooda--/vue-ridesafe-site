@@ -7,7 +7,7 @@
             </h2>
         </div>
         <div class="controls">
-            <button class="refresh-button" v-on:click="refresh">
+            <button class="button refresh-button" v-on:click="refresh">
                 <img src="../assets/refresh.png"/>
                 <span>Refresh</span>
             </button>

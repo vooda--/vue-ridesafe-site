@@ -28,6 +28,10 @@ export default class Header extends Vue {
         {
             title: 'Quizes',
             link: '/quizes'
+        },
+        {
+            title: 'About',
+            link: '/about'
         }
     ];
 
@@ -39,9 +43,9 @@ export default class Header extends Vue {
 
 <style lang="scss">
 .navigation {
-    width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.30);
-    padding-bottom: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
 
     .nav-item {
         padding: 10px;

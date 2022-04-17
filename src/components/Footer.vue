@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div>VoodaLab</div>
+        <div class="company">VoodaLab</div>
         <div>2022</div>
     </div>
 </template>
@@ -15,13 +15,12 @@ export default class Footer extends Vue {
 
 <style lang="scss">
 .footer {
+    .company {
+        font-weight: bold;
+    }
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    bottom: 0;
-    width: 99%;
-    margin-top: 20px;
     border-top: 1px solid rgba(0, 0, 0, 0.30);
 }
 </style>
