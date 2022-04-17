@@ -20,7 +20,6 @@ export default class Quote extends Vue {
     @Action('images/getRandomImage') getRandomImage: ({ orientation, tags }) => Promise<AxiosResponse>;
     @Getter('images/randomImage') randomImage: any;
     @Getter('quotes/getQuoteById') getQuote: (id) => Quote;
-    @Getter('quotes/getRandomQuote') randomQuote: any;
     @Getter('user/language') language: string;
     @Prop() private quoteId;
     quote: any = {};

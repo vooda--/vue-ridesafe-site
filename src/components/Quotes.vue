@@ -72,6 +72,7 @@ export default class Quotes extends Vue {
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: 2px 2px 5px darkgray;
 
         .quote-text {
             line-height: 24px;

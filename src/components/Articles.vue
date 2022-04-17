@@ -1,15 +1,7 @@
 <template>
   <div class="articles">
-<!--    <div><span>Language: </span>-->
-<!--      <input type="text" v-model="language" v-on:keyup.enter="addArticle"/>-->
-<!--      <button v-bind:disabled="language.length == 0">language</button>-->
-<!--    </div>-->
-    <div>{{ languages }}</div>
-    <button v-on:click="addArticle">
-      Add
-    </button>
     <div>Categories:</div>
-    <div>
+    <div v-if="allCategories.length > 0">
       <ul>
         <li v-bind:key="category.id" v-for="category in allCategories">
           {{category.id}} - <span @click="getArticlesByCategory(category.id)">{{
@@ -18,13 +10,18 @@
         </li>
       </ul>
     </div>
+      <div v-else>
+          No Categories yet!
+      </div>
     <div>Articles:</div>
-    <!--    <div>{{allArticles}}</div>-->
-    <ul>
+    <ul v-if="allArticles.length>0">
       <li v-bind:key="article.id" v-for="article in allArticles">
         {{ article.id }} - {{article.title}}
       </li>
     </ul>
+      <div v-else>
+          No Articles yet!
+      </div>
   </div>
 </template>
 
@@ -40,17 +37,11 @@
     @Getter('articles/allArticles') allArticles: [];
     @Action('articles/getAllArticles') getAll;
     @Action('articles/fetchArticlesByCategory') fetchArticlesByCategory;
-    @Action('articleCategories/getAllCategories') getAllCatgories;
-
-    @Prop() private language = 'ru';
-
-    get languages(): [string, string, string] {
-      return ['ru', 'en', 'ro'];
-    }
+    @Action('articleCategories/getAllCategories') getAllCategories;
+    @Getter('user/language') language: string;
 
     mounted() {
-      this.getAllCatgories(this.language);
-      //this.getAll(this.language);
+      this.getAllCategories(this.language);
     }
 
     public getAllArticles(): void {

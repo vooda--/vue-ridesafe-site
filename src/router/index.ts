@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import QuotesView from "@/views/QuotesView.vue";
 import ArticlesView from "@/views/ArticlesView.vue";
 import QuoteView from "@/views/QuoteView.vue";
+import QuizzesView from "@/views/QuizzesView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -25,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'quote',
     component: QuoteView,
     props: true
+  },
+  {
+    path: '/quizzes',
+    name: 'quizzes',
+    component: QuizzesView
   },
   {
     path: '/about',
