@@ -52,9 +52,7 @@ export default class RandomQuote extends Vue {
     }
 
     mounted() {
-        // this.getAll(this.language).then(()=>{
         this.refresh();
-        // })
     }
 }
 </script>
