@@ -19,6 +19,8 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader',
+        // If node_modules is excluded from the rule, vuex-composition-helpers should be an exception
+        exclude: /node_modules(?!\/vuex-composition-helpers)/,
         options: { appendTsSuffixTo: [/\.vue$/] }
       },
       // это будет применяться к файлам `.js`

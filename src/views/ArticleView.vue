@@ -3,13 +3,11 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import Article from "@/components/Article.vue"; // @ is an alias to /src
+import Article from "@/components/Article.vue";
+import { defineComponent } from "vue";
 
-@Options({
-    components: {
-        Article
-    },
+export default defineComponent({
+    name: 'ArticleView',
+    components: { Article }
 })
-export default class ArticleView extends Vue {}
 </script>

@@ -1,41 +1,46 @@
 <template>
     <div class="quote-block">
         <div class="quote">
-            <img class="quote-image" :src="this.randomImage" alt="image"/>
-            <h2 class="quote-text" v-show="quote">
-                {{ this.quote?.quoteText }}
+            <img class="quote-image" :src="randomImage" alt="image"/>
+            <h2 class="quote-text">
+                {{ quote?.quoteText }}
             </h2>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Prop } from 'vue-property-decorator';
-import { Action, Getter } from 'vuex-class'
-import { Vue } from "vue-class-component";
-import { AxiosResponse } from "axios";
+import { computed, defineComponent, onMounted, ref, Ref } from "vue";
+import {useStore } from "vuex";
 
-export default class Quote extends Vue {
-    @Action('quotes/getAllQuotes') getAll: (language: string) => Promise<AxiosResponse>;
-    @Action('images/getRandomImage') getRandomImage: ({ orientation, tags }) => Promise<AxiosResponse>;
-    @Getter('images/randomImage') randomImage: any;
-    @Getter('quotes/getQuoteById') getQuote: (id) => Quote;
-    @Getter('user/language') language: string;
-    @Prop() private quoteId;
-    quote: any = {};
+export default defineComponent({
+    //eslint-disable-next-line
+    name: 'Quote',
+    props: {
+        quoteId: String
+    },
+    setup(props, context) {
+        const store = useStore();
+        const getQuoteByID = store.getters["quotes/getQuoteById"];
+        const randomImage = computed(() => store.getters['images/randomImage']);
+        let quote = ref({});
 
-
-    mounted() {
-        Promise.all(
-            [
-                this.getRandomImage({ orientation: 'landscape', tags: ['girls', 'motorcycle'] }),
-                this.getAll(this.language)
-            ]
-        ).then(() => {
-                this.quote = this.getQuote(this.quoteId);
+        onMounted(() => {
+            Promise.all(
+                [
+                    store.dispatch('quotes/getAllQuotes', 'ru'),
+                    store.dispatch('images/getRandomImage', { orientation: 'landscape', tags:['girls', 'motorcycle'] })
+                ]
+            ).then(() => {
+               quote.value = getQuoteByID(props.quoteId);
             });
+        })
+        return {
+            quote,
+            randomImage
+        }
     }
-}
+})
 </script>
 
 <style lang="scss">

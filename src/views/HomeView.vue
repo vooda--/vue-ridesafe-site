@@ -3,16 +3,13 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import Home from '@/components/Home.vue'; // @ is an alias to /src
+import Home from '@/components/Home.vue';
+import { defineComponent } from "vue";
 
-@Options({
-    components: {
-        Home: Home
-    },
+export default defineComponent({
+    name: 'HomeView',
+    components: {Home}
 })
-export default class HomeView extends Vue {
-}
 </script>
 <style lang="scss">
 .home {

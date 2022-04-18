@@ -5,13 +5,11 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import Quotes from "@/components/Quotes.vue"; // @ is an alias to /src
+import { defineComponent } from "vue";
+import Quizzes from "@/components/Quizzes.vue";
 
-@Options({
-    components: {
-        Quotes
-    },
+export default defineComponent({
+    name: 'QuizzesView',
+    //components: { Quizzes } //For future use
 })
-export default class QuizzesView extends Vue {}
 </script>

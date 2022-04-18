@@ -3,16 +3,14 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import Quote from "@/components/Quote.vue"; // @ is an alias to /src
+import Quote from "@/components/Quote.vue";
+import { defineComponent } from "vue";
 
-@Options({
+export default defineComponent({
+    name: 'QuoteView',
     props: {
-        quoteId: Number
+        quoteId: String
     },
-    components: {
-        Quote
-    },
+    components: { Quote }
 })
-export default class QuoteView extends Vue {}
 </script>
