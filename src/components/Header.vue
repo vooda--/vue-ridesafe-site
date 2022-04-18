@@ -23,7 +23,7 @@ export default class Header extends Vue {
         },
         {
             title: 'Quotes',
-            link: '/quotes'
+            link: '/quotes',
         },
         {
             title: 'Quizzes',

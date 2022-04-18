@@ -35,6 +35,7 @@ export default defineComponent({
                quote.value = getQuoteByID(props.quoteId);
             });
         })
+
         return {
             quote,
             randomImage
